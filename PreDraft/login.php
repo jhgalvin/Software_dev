@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="login.css">
     <link rel="stylesheet" href="sidebar.css">
     <title>Sign In</title>
 </head>
@@ -35,7 +35,7 @@
                 <form action="loginScript.php" method="POST">
                 
                     <!--<label class = "user" for="username">Username:</label><br>-->
-                    <input type="text" placeholder="Username email" name="user_email"><br>
+                    <input type="text" placeholder="Username" name="user_email"><br>
 
                     <!--<label class = "password" for="password">Password:</label><br>-->
                     <input type="password" placeholder="Password" name="user_password"><br>
@@ -43,7 +43,7 @@
                     <button class="submit" type="submit" name="submitbtn">Sign In</button><br>
 
                 </form><br><br><!--<br>-->
-                <a class = "underline" href="forgotpassword.php">Forgot your password?</a><br>
+                
              
             </div>
         </div>
