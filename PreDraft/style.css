@@ -17,7 +17,7 @@ body{
     padding: 2%;*/
 }
 #imgcontainer{
-    background-image: url("tiger.jpg");
+    background-image: url("oilRig.jpg");
     height: 45vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -101,7 +101,7 @@ button.cancel{
     border: 2px solid rgb(241, 3, 3);
 }
 button.cancel:hover{
-    background-color: rgb(241, 3, 3);
+    background-color: steelblue;
     color: white;
     border: 2px solid rgb(241, 3, 3);
 }
@@ -115,16 +115,16 @@ button {
     padding: 16px 32px;
     margin: 20px 2%;
     margin-top: 4%;
-    border: 2px solid #008104;
+    border: 2px solid ##00FFFF;
     cursor: pointer;
     /*text-align: center;
     display: inline-block;*/
     transition-duration: 0.1s;
   }
 button:hover{
-    background-color: #008104;
+    background-color: ##00FFFF;
     color: white;
-    border: 2px solid #008104;
+    border: 2px solid ##00FFFF;
 }
 table, th, td {
 	border-collapse: collapse;
@@ -159,7 +159,7 @@ input[type=number], select {
 
 input[type=submit] {
   width: 40%;
-  background-color: #4CAF50;
+  background-color: #4682B4;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -173,7 +173,7 @@ input[type=submit]:hover {
 }
 input[type=date] {
   width: 40%;
-  background-color: #4CAF50;
+  background-color: #4682B4;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;

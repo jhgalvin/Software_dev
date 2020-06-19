@@ -1,4 +1,5 @@
 <?PHP
+/*
 session_start();
 
 include "Database.php";
@@ -13,7 +14,7 @@ $sql="SELECT * from user where user_id = '$_COOKIE[user_id]'";
 $db->query($sql);
 $user = $db->single();
 
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +22,9 @@ $user = $db->single();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Animal</title>
-    <link rel="stylesheet" href="product.css">
-    <link rel="stylesheet" href="sidebar.css">
+    <title>New User</title>
+    <link rel="stylesheet" href="style.css"> <!-- it is fixed to style.css -->
+    <link rel="stylesheet" href="sidebar.css"> <!-- gonna stay the same file, just have to fix this to enable correct style -->
 </head>
 
 <body>
@@ -36,51 +37,43 @@ $user = $db->single();
             <span></span>
         </div>
         <ul class="side-ul">
-            <li class="side-li"><a class="side" href="addAnimalMenu.php">Dashboard</a></li>
-            <li class="side-li"><a class="side" href="addAnimalList.php">List all Animals</a></li>
-	    <li class="side-li"><a class="side" href="animalUpdate.php">Update an Animal</a></li>
-	    <li class="side-li"><a class="side" href="animalReport.php">Animal Reports</a></li>
-            <li class="side-li"><a class="side" href="logoutScript.php">Logout</a></li>
+            <li class="side-li"><a class="side" href="index.html">Home Page</a></li> <!-- -->
         </ul>
     </div>
 
    <!--- <header id="imgcontainer"></header> -->
     <div id="container" style='margin-bottom:6em;text-align:center;'>
-        <h1>Add Animal</h1>
+        <h1>New User</h1>
 
         <form  id="submit" action="addAnimalScript.php" method="POST">
 
-            <label for="animal_name">Animal Name:</label><br>
-          <input type="text"  name="animal_name" required><br>
+            <label for="user_name">userName:</label><br>
+            <input type="text"  name = "user_name" required><br>
 
-            <label for="animal_dob">Date of birth:</label><br>
-           <input type="date" placeholder="Enter animal DOB" name="animal_DOB" value="YYYY-MM-DD" required><br>
-
-            <label for="animal_gender">Gender:</label><br>
-            <select  name = "animal_gender" required>
-                <option value="">N/A</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select><br>
-
-            <label for="animal_breed">Animal Breed</label><br>
-            <input type="text" name="animal_breed" required><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id = "password" name = "password" onkeyup = "password_check()" required><br>
+		   
+		    <label for="confirm_password">Confirm Password: </label><br>
+            <input type="password" id = "confirm_password" name = "confirm_password" onkeyup = "password_check()"required><br>
 			
-            <label for="display">Currently on display?</label><br>
-            <select  name = "animal_display" required>
-                <option value="">N/A</option>
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-            </select><br>
-			
-
-            <button class="cancel" type="button" onclick="location.href='addAnimal.php'">Cancel</button >
-            <button class="button" type="submit">Submit</button >
-			
-
+            <button class="cancel" type="button" onclick="location.href='index.html'">Cancel</button>
+            <button class="button" type="submit">Submit</button>
         </form>
     </div>
-
+	<script> 
+	function password_check() 
+	{
+		if (document.getElementById('password').value != document.getElementById('confirm_password').value) 
+		{
+			
+			document.getElementById('confirm_password').setCustomValidity('Password Must be Matching.');
+		}
+		else 
+		{
+			document.getElementById('confirm_password').setCustomValidity(''); 
+		}
+	}
+</script>
     <script src="sidebar.js"></script>
 </body>
 
