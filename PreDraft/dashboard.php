@@ -1,4 +1,5 @@
 <?PHP
+/*
 session_start();
 
 include "Database.php";
@@ -13,7 +14,7 @@ $sql="SELECT * from user where user_id = '$_COOKIE[user_id]'";
 $db->query($sql);
 $user = $db->single();
 
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +44,7 @@ $user = $db->single();
         </ul>
     </div>
 
-     <!--- <header id="imgcontainer"></header> -->
+    <header id="imgcontainer"></header>
     <div id="container">
         <h1>Client Dashboard</h1>
         </div>

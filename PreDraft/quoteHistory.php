@@ -67,8 +67,8 @@ if ($_COOKIE['user_id']){
     <div id="container" style='margin-bottom:6em;text-align:center;'>
          <!-- POSTS -->
   <h1>List of All Past Quotes</h1>
-            <table class="table-info" style="width:80%;margin:auto;box-shadow: 2px 2px 12px #5a9c5a;">
-              <thead style="color:white;background:rgb(90, 156, 90);">
+            <table class="table-info" style="width:80%;margin:auto;box-shadow: 2px 2px 12px #426378;">
+              <thead style="color:white;background:steelblue;">
                 <tr>
 					<th> #</th>
                   <th>Gallons Requested</th>
@@ -85,7 +85,7 @@ if ($_COOKIE['user_id']){
 		/*THE FOLLOWING IS HARDCODED FILLER DATA! DELETE LATER!!!!*/
 		
 		for ($num=1; $num <= 5; $num++) {
- 	 		$shade = ($num % 2) ? 'style="background:#deffdc;"':'';
+ 	 		$shade = ($num % 2) ? 'style="background:#b0e0ff;"':'';
 			echo "<tr $shade>
 				<td>$num</td>
 				<td>Filler Data</td>
