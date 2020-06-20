@@ -38,7 +38,7 @@ $user = $db->single();
         <ul class="side-ul">
             <li class="side-li"><a class="side" href="quoteCreate.php">Create Quote</a></li>
             <li class="side-li"><a class="side" href="quoteHistory.php">Quote History</a></li>
-	    <li class="side-li"><a class="side" href="profileupdate.php">Update Profile</a></li>
+	    <li class="side-li"><a class="side" href="profileUpdate.php">Update Profile</a></li>
             <li class="side-li"><a class="side" href="logoutScript.php">Log out</a></li>
         </ul>
     </div>
