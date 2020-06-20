@@ -1,5 +1,5 @@
-<!--<?PHP
-session_start();
+<?PHP
+/*session_start();
 
 include "Database.php";
 
@@ -14,7 +14,7 @@ $db->query($sql);
 $user = $db->single();
 
 
-?>-->
+*/?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +57,7 @@ $user = $db->single();
 			<input type="date" name="companyAddress2"><br>
 
             <label for="companyCity">City:</label><br>
-            <input  name = "companyCity" required>
+            <input  name = "companyCity" required><br>
 
             <label for="companyZipCode">Zip Code:</label><br>
             <input type="text" name="companyZipCode" required><br>

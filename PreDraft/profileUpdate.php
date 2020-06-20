@@ -1,5 +1,5 @@
-<!--<?PHP
-session_start();
+<?PHP
+/*session_start();
 
 include "Database.php";
 
@@ -38,8 +38,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 }
 
-
-?>-->
+*/
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -115,7 +115,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 							<td>$item->companyCity</td>
 							<td>$item->companyState</td>
 							<td>$item->companyZipCode</td>
-							<td><a href='animalUpdtForm.php?id=$item->animal_id'>Update</a></td>
+							<td><a href='profileUpdate.php?id=$item->animal_id'>Update</a></td>
 						</tr>";
 						$num++;
 				}
