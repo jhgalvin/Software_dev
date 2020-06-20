@@ -48,19 +48,19 @@ $user = $db->single();
         <form  id="submit" action="profileCreateScript.php" method="POST">
 
             <label for="companyName">Company Name:</label><br>
-			<input type="text"  name="companyName" required><br><br>
+			<input size = "50" type="text"  name="companyName" required><br><br>
 			
 			<label for = "companyEmail">Company Email:</label><br>
-			<input type = "text" name = "companyEmail" required><br><br>
+			<input size = "50" type = "text" name = "companyEmail" required><br><br>
 
 			<label for="companyAddress1">Address 1:</label><br>
-			<input type="text" name="companyAddress1" required><br><br>
+			<input size = "100" type="text" name="companyAddress1" required><br><br>
 			
 			<label for="companyAddress2">Address 2:</label><br>
-			<input type="text" name="companyAddress2"><br><br>
+			<input size = "100" type="text" name="companyAddress2"><br><br>
 
             <label for="companyCity">City:</label><br>
-            <input type = "text" name = "companyCity" required><br><br>
+            <input size = "100" type = "text" name = "companyCity" required><br><br>
 			
 			<label for = "companyState">Select State:</label><br>
 				<select id = "stateList" required>
@@ -118,9 +118,7 @@ $user = $db->single();
 			<br><br>
 
             <label for="companyZipCode">Zip Code:</label><br>
-            <input type="text" name="companyZipCode" required><br>
-			
-			<br>
+            <input minlength = "5" maxlength = "9" type="text" name="companyZipCode" required><br>
 			
             <button class="cancel" type="button" onclick="location.href='profileCreate.php'">Clear All</button >
             <button class="button" type="submit">Submit</button >

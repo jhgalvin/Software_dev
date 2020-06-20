@@ -81,19 +81,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		<div id="container" style='margin-bottom:6em;text-align:center;'>
 			<h1> Update Form </h1>
 				<label for="companyName">Company Name:</label><br>
-				<input type="text" name="companyName" required ><br><br>
+				<input size = "50" type="text" name="companyName" required ><br><br>
 				
 				<label for = "companyEmail">Company Email:</label><br>
-				<input type = "text" name = "companyEmail" required><br><br>
+				<input size = "50" type = "text" name = "companyEmail" required><br><br>
 
 				<label for="companyAddress1">Address 1:</label><br>
-				<input type="text" name = "companyAddress1" required ><br><br>
+				<input size = "100" type="text" name = "companyAddress1" required ><br><br>
 
 				<label for="companyAddress2">Address 2:</label><br>
-				<input type="text" name="companyAddress2"><br><br>
+				<input size = "100" type="text" name="companyAddress2"><br><br>
 				
 				<label for="companyCity">City:</label><br>
-				<input type="text" name="companyCity" required ><br><br>
+				<input size = "100" type="text" name="companyCity" required ><br><br>
 				
 				<label for = "companyState">Select State:</label><br>
 				<select id = "stateList" required>
@@ -150,11 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				</select>
 				<br><br>
 				<label for="companyZipCode"><br>Zip Code:</br></label>
-				<input type="text" name="companyZipCode" required ><br>
+				<input size = "9" minlength = "5" type="text" name="companyZipCode" required ><br>
 				
-				<br>
-
-
 			<button class="cancel" type="button" onclick="location.href='profileUpdate.php'">Clear All</button >
 			<button class="button" type="submit">Submit</button >
         </div>
