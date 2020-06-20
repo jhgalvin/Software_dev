@@ -3,18 +3,16 @@ include "Database.php";
 ini_set("display_errors",E_ALL);
 
 
-Class AddAnimalClass
+Class profileCreateClass
 {
 	public $post;
 	
-	public $animal_name;
-	public $department_id;
-	public $animal_DOB;
-	public $animal_gender;
-	public $animal_breed;
-	public $animal_display;
+	public $companyName;
+	public $companyAddress;
+	public $companyCity;
+	public $companyState;
+	public $companyZipCode;
 	public $user_id;
-	public $animal_time;
 	public $db;
 	public $result;
 	public function __construct(Array $post)
@@ -23,13 +21,11 @@ Class AddAnimalClass
 		
 		$this->post = $post; // $_POST array from form;
 		$this->id =$_COOKIE['user_id'];
-		$this->animal_name = $this->post['animal_name'];
-		$this->department_id = 1;
-		$this->user_id=$_COOKIE['user_id'];
-		$this->animal_DOB = $this->post['animal_DOB'];
-		$this->animal_gender = $this->post['animal_gender'];
-		$this->animal_breed = $this->post['animal_breed'];
-		$this->animal_display = $this->post['animal_display'];
+		$this->animal_name = $this->post['companyName'];
+		$this->companyAddress1 = $this->['companyAddress1'];
+		$this->companyAddress2 = $this->['companyAddress2'];
+		$this->companyCity=$_COOKIE['companyCity'];
+		$this->companyZipCode = $this->post['companyZipCode'];
 		
 		
 
@@ -46,11 +42,11 @@ Class AddAnimalClass
 	  print_r($this->result);
 	}
 	
-	public function checkCookie(){
+	/*public function checkCookie(){
 	 if(!$_COOKIE['user_id'] ){
 		header('Location: index.html');
 		}
-	}
+	}*/
 
 	
 	public function profileFill(){
@@ -58,22 +54,23 @@ Class AddAnimalClass
 		{
 		try
 		{
-			$sql = "INSERT INTO  animal (animal_name, department_id, animal_DOB, animal_gender, animal_breed, animal_display, user_id) VALUES ('$this->animal_name', '$this->department_id', '$this->animal_DOB', '$this->animal_gender', '$this->animal_breed', '$this->animal_display', '$this->user_id')";
+			$sql = "INSERT INTO  companyProfile (companyName, companyAddress1,companyAddress2, companyCity, companyState, companyZipCode) VALUES ('$this->companyName', '$this->companyAddress1', '$this->companyAddress2', 
+				'$this->companyCity', '$this->companyState', '$this->companyZipCode')";
 			$this->db->query($sql);
 			$this->result = $this->db->execute();
 			echo '<script type="text/JavaScript">
-            		alert("Animal was successfully added.");
-           		window.location.replace("http://www.zoonika.com/addAnimalList.php");
+            		alert("Profile was successfully added.");
+           		window.location.replace("http://www.zoonika.com/dashboard.php");
             		</script>'
 			;
 		}catch(PDOException $e){
 			echo '<script type="text/JavaScript">
                 	alert("An error occured when inserting this animal (Possibly a duplicate).");
-               		window.location.replace("http://www.zoonika.com/addAnimal.php");
+               		window.location.replace("http://www.zoonika.com/profileCreate.php");
                 	</script>'
 			;
 		}
-		//header("Location: http://www.zoonika.com/addAnimalList.php");
+		//header("Location: http://www.zoonika.com/profileCreate.php");
 		}
 	}
 }

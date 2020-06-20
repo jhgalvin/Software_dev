@@ -1,4 +1,4 @@
-<?PHP
+<!--<?PHP
 session_start();
 
 include "Database.php";
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 }
 
 
-?>
+?>-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 <head>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Update Ride</title>
+  <title>Update Company Profile</title>
   <link rel="stylesheet" href="product.css">
   <link rel="stylesheet" href="sidebar.css">
 </head>
@@ -66,10 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
         <span></span>
     </div>
     <ul class="side-ul">
-        <li class="side-li"><a class="side" href="addAnimalMenu.php">Dashboard</a></li>
-        <li class="side-li"><a class="side" href="addAnimalList.php">List All Animals</a></li>
-	<li class="side-li"><a class="side" href="animalUpdate.php">Animal Update</a></li>
-	<li class="side-li"><a class="side" href="animalReport.php">Animal Reports</a></li>
+        <li class="side-li"><a class="side" href="dashboard.php">Dashboard</a></li>
         <li class="side-li"><a class="side" href="logoutScript.php">Log out</a></li>
     </ul>
   </div>
@@ -82,39 +79,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
    <form  method="post">
 		<div id="container" style='margin-bottom:6em;text-align:center;'>
-			<h1> Update Form For the Animal</h1>
-				<label for="animal_name"><br>Animal Name:</br></label>
-				<input type="text"  name="name" value="<?php echo $item->animal_name; ?>" required ><br>
+			<h1> Update Form </h1>
+				<label for="companyName"><br>Company Name:</br></label>
+				<input type="text"  name="name" value="<?php echo $item->companyName; ?>" required ><br>
 
-				<label for="animal_DOB"><br>Date of Birth:</br></label>
-				<input type="date"  name="DOB" value="<?php echo $item->animal_DOB; ?>" required ><br>
+				<label for="companyAddress1"><br>Address 1:</br></label>
+				<input type="date"  name="DOB" value="<?php echo $item->companyAddress1; ?>" required ><br>
 
-                <?php $genderStatus = $item->animal_gender;?>
-				<label for="animal_gender"><br>Gender:</br></label>
-				<select  name="gender" required>
-				    <option value= "" <?php if($genderStatus == "") echo "SELECTED";?> >N/A</option>
-				    <option value= "Male" <?php if($genderStatus == "Male") echo "SELECTED";?> >Male</option>
-				    <option value= "Female" <?php if($genderStatus == "Female") echo "SELECTED";?> >Female</option>
-				</select><br>
+				<label for="companyAddress2"><br>Address 2:</br></label>
+				<input type="text"  name="breed" value="<?php echo $item->companyAddress2; ?>"><br>
+				
+				<label for="companyCity"><br>City:</br></label>
+				<input type="text"  name="breed" value="<?php echo $item->companyCity; ?>" required ><br>
+				
+				<label for="companyState"><br>State:</br></label>
+				<input type="text"  name="breed" value="<?php echo $item->companyState; ?>" required ><br>
+				
+				<label for="companyZipCode"><br>Zip Code:</br></label>
+				<input type="text"  name="breed" value="<?php echo $item->companyZipCode; ?>" required ><br>
 
-				<label for="animal_breed"><br>Animal Breed:</br></label>
-				<input type="text"  name="breed" value="<?php echo $item->animal_breed; ?>" required ><br>
 
-                <?php $displayStatus = $item->animal_display;?>
-				<label for="animal_display"><br>Currently on display?</br></label>
-				<select name="display" required>
-				    <option value= "" <?php if($displayStatus == "") echo "SELECTED";?> >N/A</option>
-				    <option value= "Yes" <?php if($displayStatus == "Yes") echo "SELECTED";?> >Yes</option>
-				    <option value= "No" <?php if($displayStatus == "No") echo "SELECTED";?> >No</option>
-				</select><br>
-
-			<button class="cancel" type="button" onclick="location.href='addAnimalMenu.php'">Cancel</button >
+			<button class="cancel" type="button" onclick="location.href='profileUpdate.php'">Cancel</button >
 			<button class="button" type="submit">Submit</button >
         </div>
     </form>
 
 
-//value="<?php echo $item->animal_name; ?>"
+//value="<?php echo $item->companyName; ?>"
 
 
 

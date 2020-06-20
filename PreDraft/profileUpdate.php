@@ -1,4 +1,4 @@
-<?PHP
+<!--<?PHP
 session_start();
 
 include "Database.php";
@@ -39,17 +39,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 }
 
 
-?>
+?>-->
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reports</title>
-  <link rel="stylesheet" href="product.css">
-  <link rel="stylesheet" href="sidebar.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Update Profile</title>
+	<link rel="stylesheet" href="product.css">
+	<link rel="stylesheet" href="sidebar.css">
 </head>
 
 <body>
@@ -62,10 +62,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <span></span>
     </div>
     <ul class="side-ul">
-        <li class="side-li"><a class="side" href="addAnimalMenu.php">Dashboard</a></li>
-		<li class="side-li"><a class="side" href="addAnimal.php">Add New Animal</a></li>
-        <li class="side-li"><a class="side" href="addAnimalList.php">List All Animals</a></li>
-	<li class="side-li"><a class="side" href="animalReport.php">Animal Reports</a></li>
+        <li class="side-li"><a class="side" href="dashboard.php">Dashboard</a></li>
         <li class="side-li"><a class="side" href="logoutScript.php">Log out</a></li>
     </ul>
   </div>
@@ -82,8 +79,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
           <input type="text" placeholder="Enter a word" name="svar" required><br>
 
        <button class="button" type="submit">Submit</button >
-        </div>
-      </form>
+    </div>
+    </form>
 
  <?PHP if($_SERVER['REQUEST_METHOD'] == "POST"){ ?>
 
@@ -112,16 +109,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 					$shade = ($num % 2) ? 'style="background:#deffdc;"':'';
 					echo "<tr $shade>
 							<td>$num</td>
-							<td>$item->animal_name</td>
-							<td>$item->animal_DOB</td>
-							<td>$item->animal_gender</td>
-							<td>$item->animal_breed</td>
-							<td>$item->animal_display</td>
-							<td>$item->user_fname $item->user_lname</td>
-							<td>$item->animal_time</td>
-							<td><a href='animalDelete.php?id=$item->animal_id' >Delete</a></td>
+							<td>$item->companyName</td>
+							<td>$item->companyAddress1</td>
+							<td>$item->companyAddress2</td>
+							<td>$item->companyCity</td>
+							<td>$item->companyState</td>
+							<td>$item->companyZipCode</td>
 							<td><a href='animalUpdtForm.php?id=$item->animal_id'>Update</a></td>
-
 						</tr>";
 						$num++;
 				}
