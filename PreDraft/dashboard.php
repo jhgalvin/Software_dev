@@ -21,8 +21,8 @@ $user = $db->single();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animal Admin Menu</title>
-    <link rel="stylesheet" href="addAnimal.css">
+    <title>Oil Company</title>
+    <link rel="stylesheet" href="dashboard.css">
     <link rel="stylesheet" href="sidebar.css">
 </head>
 
@@ -36,17 +36,16 @@ $user = $db->single();
             <span></span>
         </div>
         <ul class="side-ul">
-            <li class="side-li"><a class="side" href="addAnimal.php">Add New Animal</a></li>
-            <li class="side-li"><a class="side" href="addAnimalList.php">See All Animals</a></li>
-	    <li class="side-li"><a class="side" href="animalUpdate.php">Update an Animal</a></li>
-	    <li class="side-li"><a class="side" href="animalReport.php">Animal Reports</a></li>
+            <li class="side-li"><a class="side" href="quoteCreate.php">Create Quote</a></li>
+            <li class="side-li"><a class="side" href="quoteHistory.php">Quote History</a></li>
+	    <li class="side-li"><a class="side" href="profileupdate.php">Update Profile</a></li>
             <li class="side-li"><a class="side" href="logoutScript.php">Log out</a></li>
         </ul>
     </div>
 
      <!--- <header id="imgcontainer"></header> -->
     <div id="container">
-        <h1>Animal Admin Dashboard</h1>
+        <h1>Client Dashboard</h1>
         </div>
         
     
