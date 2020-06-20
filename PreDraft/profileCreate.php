@@ -51,18 +51,23 @@ $user = $db->single();
 			<input type="text"  name="companyName" required><br>
 
 			<label for="companyAddress1">Address 1:</label><br>
-			<input type="date" name="companyAddress1" required><br>
+			<input type="text" name="companyAddress1" required><br>
 			
 			<label for="companyAddress2">Address 2:</label><br>
-			<input type="date" name="companyAddress2"><br>
+			<input type="text" name="companyAddress2"><br>
 
             <label for="companyCity">City:</label><br>
+            <input  name = "companyCity" required><br>
+			
+			<label for="companyState">State:</label><br>
             <input  name = "companyCity" required><br>
 
             <label for="companyZipCode">Zip Code:</label><br>
             <input type="text" name="companyZipCode" required><br>
 			
-            <button class="cancel" type="button" onclick="location.href='profileCreate.php'">Cancel</button >
+			<br>
+			
+            <button class="cancel" type="button" onclick="location.href='profileCreate.php'">Clear All</button >
             <button class="button" type="submit">Submit</button >
 			
 

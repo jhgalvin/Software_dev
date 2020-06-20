@@ -1,5 +1,5 @@
-<!--<?PHP
-session_start();
+<?PHP
+/*session_start();
 
 include "Database.php";
 
@@ -42,8 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 }
 
-
-?>-->
+*/
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -81,31 +81,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		<div id="container" style='margin-bottom:6em;text-align:center;'>
 			<h1> Update Form </h1>
 				<label for="companyName"><br>Company Name:</br></label>
-				<input type="text"  name="name" value="<?php echo $item->companyName; ?>" required ><br>
+				<input type="text" name="companyName" required ><br>
 
 				<label for="companyAddress1"><br>Address 1:</br></label>
-				<input type="date"  name="DOB" value="<?php echo $item->companyAddress1; ?>" required ><br>
+				<input type="text" name = "companyAddress1" required ><br>
 
 				<label for="companyAddress2"><br>Address 2:</br></label>
-				<input type="text"  name="breed" value="<?php echo $item->companyAddress2; ?>"><br>
+				<input type="text" name="companyAddress2"><br>
 				
 				<label for="companyCity"><br>City:</br></label>
-				<input type="text"  name="breed" value="<?php echo $item->companyCity; ?>" required ><br>
+				<input type="text" name="companyCity" required ><br>
 				
 				<label for="companyState"><br>State:</br></label>
-				<input type="text"  name="breed" value="<?php echo $item->companyState; ?>" required ><br>
+				<input type="text" name="companyState" required ><br>
 				
 				<label for="companyZipCode"><br>Zip Code:</br></label>
-				<input type="text"  name="breed" value="<?php echo $item->companyZipCode; ?>" required ><br>
+				<input type="text" name="companyZipCode" required ><br>
+				
+				<br>
 
 
-			<button class="cancel" type="button" onclick="location.href='profileUpdate.php'">Cancel</button >
+			<button class="cancel" type="button" onclick="location.href='profileUpdate.php'">Clear All</button >
 			<button class="button" type="submit">Submit</button >
         </div>
     </form>
 
 
-//value="<?php echo $item->companyName; ?>"
+value="<?php echo $item->companyName; ?>"
 
 
 
