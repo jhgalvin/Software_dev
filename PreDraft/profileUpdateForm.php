@@ -82,6 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			<h1> Update Form </h1>
 				<label for="companyName">Company Name:</label><br>
 				<input type="text" name="companyName" required ><br><br>
+				
+				<label for = "companyEmail"?Company Email:</label><br>
+				<input type = "text" name = "companyEmail" required><br><br>
 
 				<label for="companyAddress1">Address 1:</label><br>
 				<input type="text" name = "companyAddress1" required ><br><br>
