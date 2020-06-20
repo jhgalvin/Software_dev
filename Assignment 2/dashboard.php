@@ -45,7 +45,7 @@ $user = $db->single();
 
      <!--- <header id="imgcontainer"></header> -->
     <div id="container">
-        <h1>Client Dashboard</h1>
+	<p style="text-align:center;">Oil Company</p>
         </div>
         
     
