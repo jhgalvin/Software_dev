@@ -41,8 +41,12 @@
                     <input type="password" placeholder="Password" name="user_password"><br>
 
                     <button class="submit" type="submit" name="submitbtn">Sign In</button><br>
-
+					
+					<a href = "signUp.php">Click Here for New Customer</a>
+					
                 </form><br><br><!--<br>-->
+				
+				
                 
              
             </div>
