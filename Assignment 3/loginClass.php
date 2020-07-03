@@ -7,7 +7,7 @@ Class loginClass
 	public $post;
 	public $company_User; //user_email
 	public $company_Pass; //user_password
-	public $company_ID; //department_id
+
 	public $db;
 	public $result;
 	public function __construct(Array $post)
@@ -18,11 +18,11 @@ Class loginClass
 		$this->company_User = $this->post['company_User'];
 		$this->company_Pass = $this->post['company_Pass'];
 		
-		$sql = "SELECT * FROM user WHERE company_User = '$this->company_User' AND company_Pass = '$this->company_Pass' ";
+		$sql = "SELECT * FROM logincredentials WHERE company_User = '$this->company_User' AND company_Pass = '$this->company_Pass' ";
 
 		$this->db->query($sql);
 		$this->result = $this->db->single();
-		$this->company_ID = $this->result->company_ID;
+
 		$this->login();
 	}
 	public function login()
@@ -30,7 +30,7 @@ Class loginClass
 		 print_r($result);
 		if($this->result)
 		{
-			setcookie('user_id',$this->result->user_id,time()+(60*60),'/');
+			setcookie('company_ID',$this->result->company_ID,time()+(60*60),'/');
 		
 			exit(header("Location: dashboard.php")); /* Redirect browser */
 		}
