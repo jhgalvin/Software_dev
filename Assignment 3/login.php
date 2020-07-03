@@ -35,10 +35,10 @@
                 <form action="loginScript.php" method="POST">
                 
                     <!--<label class = "user" for="username">Username:</label><br>-->
-                    <input type="text" placeholder="Username" name="user_email"><br>
+                    <input type="text" placeholder="Username" name="company_User"><br>
 
                     <!--<label class = "password" for="password">Password:</label><br>-->
-                    <input type="password" placeholder="Password" name="user_password"><br>
+                    <input type="password" placeholder="Password" name="company_Pass"><br>
 
                     <button class="submit" type="submit" name="submitbtn">Sign In</button><br>
 					
