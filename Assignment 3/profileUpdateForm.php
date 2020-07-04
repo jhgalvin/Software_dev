@@ -1,48 +1,49 @@
 <?PHP
-/*session_start();
+session_start();
 
 include "Database.php";
 
-if(!$_COOKIE['user_id']){
+if(!$_COOKIE['company_ID']){
 	header('Location: index.html');
 }
 
 $db = new Database();
 
-$sql="SELECT * from user
- where user_id = '$_COOKIE[user_id]'";
+$sql="SELECT * from logincredentials
+ where company_ID = '$_COOKIE[company_ID]'";
 $db->query($sql);
-$user = $db->single();
+$company_ID = $db->single();
 
-if(isset($_GET['id']) && ($_GET['id']!== '')){
-	$product_id = $_GET['id'];
+if(isset($_GET['company_ID']) && ($_GET['company_ID']!== '')){
+	$company_ID = $_GET['company_ID'];
 
 
-	$sql="SELECT * from animal where animal_id = '$product_id'";
+	$sql="SELECT * from companyprofile where company_ID = '$company_ID'";
 	$db->query($sql);
 	$item = $db->single();
 
 }
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-	$name = $_POST['name'];
-	$DOB = $_POST['DOB'];
-	$gender = $_POST['gender'];
-	$breed = $_POST['breed'];
-	$display = $_POST['display'];
+	$companyName = $_POST['companyName'];
+	$companyAddress1 = $_POST['companyAddress1'];
+	$companyAddress2 = $_POST['companyAddress2'];
+	$companyCity = $_POST['companyCity'];
+	$companyState = $_POST['companyState'];
+	$companyZipCode = $_POST['companyZipCode'];
 
 	$sql="
-	UPDATE animal SET animal_name = '$name', animal_DOB = '$DOB', animal_gender = '$gender', animal_breed = '$breed', animal_display = '$display'
-	WHERE animal_id = '$product_id' ";
+	UPDATE companyprofile SET companyName = '$companyName', companyAddress1 = '$companyAddress1', companyAddress2 = '$companyAddress2', companyCity = '$companyCity', companyState = '$companyState', 
+	companyZipCode = '$companyZipCode' WHERE companyName = '$companyName'";
 	$db->query($sql);
 	$db->execute();
-	header('Location: animalUpdate.php');
+	header('Location: dashboard.php');
 	// echo "<pre>";
 	 //echo print_r($vv);die;
 
 }
 
-*/
+
 ?>
 
 <!DOCTYPE html>
@@ -82,9 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 			<h1> Update Form </h1>
 				<label for="companyName">Company Name:</label><br>
 				<input size = "50" type="text" name="companyName" required ><br><br>
-				
-				<label for = "companyEmail">Company Email:</label><br>
-				<input size = "50" type = "text" name = "companyEmail" required><br><br>
 
 				<label for="companyAddress1">Address 1:</label><br>
 				<input size = "100" type="text" name = "companyAddress1" required ><br><br>
@@ -96,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				<input size = "100" type="text" name="companyCity" required ><br><br>
 				
 				<label for = "companyState">Select State:</label><br>
-				<select id = "stateList" required>
+				<select id = "companyState" required>
 					<option value = "AL">AL</option>
 					<option value = "AK">AK</option>
 					<option value = "AZ">AZ</option>
@@ -152,14 +150,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				<label for="companyZipCode"><br>Zip Code:</br></label>
 				<input size = "9" minlength = "5" type="text" name="companyZipCode" required ><br>
 				
-			<button class="cancel" type="button" onclick="location.href='profileUpdate.php'">Clear All</button >
+				
+			<button class="cancel" type="button" onclick="location.href='profileUpdateForm.php'">Clear All</button >
 			<button class="button" type="submit">Submit</button >
         </div>
     </form>
-
-
-value="<?php echo $item->companyName; ?>"
-
-
 
 </html>
