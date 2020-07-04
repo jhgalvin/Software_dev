@@ -1,5 +1,4 @@
 <?PHP
-/*
 session_start();
 
 include "Database.php";
@@ -7,31 +6,27 @@ include "Database.php";
 
 $db = new Database();
 
-$sql="SELECT * from user where user_id = '$_COOKIE[user_id]'";
+$sql="SELECT * from logincredentials where company_ID = '$_COOKIE[company_ID]'";
 $db->query($sql);
 $user = $db->single();
 
-if(!$_COOKIE['user_id']){
+if(!$_COOKIE['company_ID']){
 	header('Location: index.html');
 }
-if ($_COOKIE['user_id']){
+if ($_COOKIE['company_ID']){
 
 	$sql="SELECT 
-	quote.gallons,
-	quote.delivery_address,
-	quote.delivery_date,
-	quote.price,
-	quote.total
-	FROM quote;
+	companyquote.gallons_Requested,
+	companyquote.delivery_Address,
+	companyquote.delivery_Date,
+	companyquote.suggested_Price,
+	companyquote.total_amt_Due
+	FROM companyquote
+	WHERE companyquote.company_ID = '$_COOKIE[company_ID]'";
 		
 	$db->query($sql);
 	$result = $db->resultSet();
 	}
-	//$rowNum = $db->rowCount();
-	// echo "<pre>";
-	// echo print_r($result);die;
-
-*/
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +77,7 @@ if ($_COOKIE['user_id']){
               <tbody>
              <?PHP
 
-		/*THE FOLLOWING IS HARDCODED FILLER DATA! DELETE LATER!!!!*/
+		/*THE FOLLOWING IS HARDCODED FILLER DATA! DELETE LATER!!!!
 		
 		for ($num=1; $num <= 5; $num++) {
  	 		$shade = ($num % 2) ? 'style="background:#b0e0ff;"':'';
@@ -96,25 +91,25 @@ if ($_COOKIE['user_id']){
 							
 							
 					</tr>";
-		}
+		}*/
 				
-		/*  FIX ME!!!!   INTEGRATE WITH DATABASE!!!
+		/* INTEGRATION WITH DATABASE!!! */
 				$num=1;
 				foreach($result as $item){
-					$shade = ($num % 2) ? 'style="background:#deffdc;"':'';
+					$shade = ($num % 2) ? 'style="background:#b0e0ff;"':'';
 					echo "<tr $shade>
 							<td>$num</td>
-							<td>$item->gallons</td>
-							<td>$item->delivery_address</td>
-							<td>$item->delivery_date</td>
-							<td>$item->price</td>
-							<td>$item->total</td>
+							<td>$item->gallons_Requested</td>
+							<td>$item->delivery_Address</td>
+							<td>$item->delivery_Date</td>
+							<td>$item->suggested_Price</td>
+							<td>$item->total_amt_Due</td>
 							
 							
 						</tr>";
 						$num++;
 				}
-			*/ ?>
+			 ?>
               </tbody>
             </table>
  

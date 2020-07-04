@@ -1,21 +1,29 @@
 
 <?PHP
-/*
+
 session_start();
 
 include "Database.php";
 
-if(!$_COOKIE['user_id']){
+if(!$_COOKIE['company_ID']){
 	header('Location: index.html');
 }
 
 $db = new Database();
 
-$sql="SELECT * from user where user_id = '$_COOKIE[user_id]'";
+$sql="SELECT * from logincredentials where company_ID = '$_COOKIE[company_ID]'";
 $db->query($sql);
 $user = $db->single();
 
-*/
+
+
+
+$sql="SELECT companyAddress1 from companyprofile where company_ID = '$_COOKIE[company_ID]'";
+	$db->query($sql);
+	$item = $db->single();
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -53,19 +61,19 @@ $user = $db->single();
         <form  id="submit" action="quoteCreateScript.php" method="POST" >
 
             <label for="gallons">Gallons Requested:</label><br>
-          <input type="number" oninput = "clearPrices()" id = "gallons" step=0.01 min = 0.00 placeholder="0.00" name="gallons" required><br>
+          <input type="number" oninput = "clearPrices()" id = "gallons" step=0.01 min = 0.00 placeholder="0.00" name="gallons_Requested" required><br>
 
             <label for="delivery_address">Delivery Address:</label><br>
-           <input type="text" id = "address" name="delivery_address" value="Address from Profile" readonly><br>
+           <input type="text" id = "address" name="delivery_Address" value="<?php echo $item->companyAddress1; ?>" readonly><br>
 
             <label for="delivery_date">Delivery Date:</label><br>
-           <input type="date" id = "delivery_date" placeholder="Enter a date for delivery" name="delivery_date" value="YYYY-MM-DD" required><br>
+           <input type="date" id = "delivery_date" placeholder="Enter a date for delivery" name="delivery_Date" value="YYYY-MM-DD" required><br>
 
             <label for="suggested_price">Suggested Price per Gallon:</label><br>
-          <input type="number" id = "price" min = 0.00 placeholder="0.00" name="suggested_price" onkeydown="return false;" style="pointer-events: none;"><br>
+          <input type="number" id = "price" min = 0.00 placeholder="0.00" name="suggested_Price" onkeydown="return false;" style="pointer-events: none;"><br>
 			
             <label for="total_cost">Total Amount Due:</label><br>
-          <input type="number" id = "total"  placeholder="0.00" name="total_cost" onkeydown="return false;" style="pointer-events: none;"><br>
+          <input type="number" id = "total"  placeholder="0.00" name="total_amt_Due" onkeydown="return false;" style="pointer-events: none;"><br>
 			
 
         <button class="button" type="button" onclick="calculate_price()">Get Quote</button>    
@@ -100,7 +108,7 @@ function submitCheck()
   	}
  	else
   	{
-    	 	document.getElementById("submit").innerHTML=("<p><b><center>Thank you for submitting a quote!");
+
       		return true;
   	}
 }
