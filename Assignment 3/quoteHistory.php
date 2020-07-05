@@ -51,8 +51,8 @@ if ($_COOKIE['company_ID']){
         </div>
         <ul class="side-ul">
             <li class="side-li"><a class="side" href="dashboard.php">Dashboard</a></li>
-            <li class="side-li"><a class="side" href="profileUpdate.php">View/Update Profile</a></li>
-	    <li class="side-li"><a class="side" href="quoteCreate.php">Create New Quote</a></li>
+            <li class="side-li"><a class="side" href="quoteCreate.php">Create New Quote</a></li>
+            <li class="side-li"><a class="side" href="profileUpdateForm.php">View/Update Profile</a></li>
             <li class="side-li"><a class="side" href="logoutScript.php">Logout</a></li>
             
         </ul>

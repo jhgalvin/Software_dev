@@ -9,20 +9,16 @@ if(!$_COOKIE['company_ID']){
 
 $db = new Database();
 
-$sql="SELECT * from logincredentials
- where company_ID = '$_COOKIE[company_ID]'";
+$sql="SELECT * from logincredentials where company_ID = '$_COOKIE[company_ID]'";
 $db->query($sql);
-$company_ID = $db->single();
-
-if(isset($_GET['company_ID']) && ($_GET['company_ID']!== '')){
-	$company_ID = $_GET['company_ID'];
+$user = $db->single();
 
 
-	$sql="SELECT * from companyprofile where company_ID = '$company_ID'";
-	$db->query($sql);
-	$item = $db->single();
+$sql="SELECT * from companyprofile where company_ID = '$_COOKIE[company_ID]'";
+$db->query($sql);
+$item = $db->single();
 
-}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 	$companyName = $_POST['companyName'];
@@ -34,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 	$sql="
 	UPDATE companyprofile SET companyName = '$companyName', companyAddress1 = '$companyAddress1', companyAddress2 = '$companyAddress2', companyCity = '$companyCity', companyState = '$companyState', 
-	companyZipCode = '$companyZipCode' WHERE companyName = '$companyName'";
+	companyZipCode = '$companyZipCode' WHERE company_ID = '$_COOKIE[company_ID]'";
 	$db->query($sql);
 	$db->execute();
 	header('Location: dashboard.php');
@@ -68,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     </div>
     <ul class="side-ul">
         <li class="side-li"><a class="side" href="dashboard.php">Dashboard</a></li>
+        <li class="side-li"><a class="side" href="quoteCreate.php">Create Quote</a></li>
+        <li class="side-li"><a class="side" href="quoteHistory.php">Quote History</a></li>
         <li class="side-li"><a class="side" href="logoutScript.php">Log out</a></li>
     </ul>
   </div>
@@ -82,19 +80,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 		<div id="container" style='margin-bottom:6em;text-align:center;'>
 			<h1> Update Form </h1>
 				<label for="companyName">Company Name:</label><br>
-				<input size = "50" type="text" name="companyName" required ><br><br>
+				<input size = "50" type="text" name="companyName" value="<?php echo $item->companyName; ?>" required ><br><br>
 
 				<label for="companyAddress1">Address 1:</label><br>
-				<input size = "100" type="text" name = "companyAddress1" required ><br><br>
+				<input size = "100" type="text" name = "companyAddress1" value="<?php echo $item->companyAddress1; ?>" required ><br><br>
 
 				<label for="companyAddress2">Address 2:</label><br>
-				<input size = "100" type="text" name="companyAddress2"><br><br>
+				<input size = "100" type="text" name="companyAddress2" value="<?php echo $item->companyAddress2; ?>" ><br><br>
 				
 				<label for="companyCity">City:</label><br>
-				<input size = "100" type="text" name="companyCity" required ><br><br>
+				<input size = "100" type="text" name="companyCity" value="<?php echo $item->companyCity; ?>" required ><br><br>
 				
 				<label for = "companyState">Select State:</label><br>
-				<select id = "companyState" required>
+				<select id = "companyState" name= "companyState" required>
 					<option value = "AL">AL</option>
 					<option value = "AK">AK</option>
 					<option value = "AZ">AZ</option>
@@ -148,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 				</select>
 				<br><br>
 				<label for="companyZipCode"><br>Zip Code:</br></label>
-				<input size = "9" minlength = "5" type="text" name="companyZipCode" required ><br>
+				<input size = "9" minlength = "5" type="text" name="companyZipCode" value="<?php echo $item->companyZipCode; ?>" required ><br>
 				
 				
 			<button class="cancel" type="button" onclick="location.href='profileUpdateForm.php'">Clear All</button >

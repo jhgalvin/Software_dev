@@ -48,7 +48,7 @@ $sql="SELECT companyAddress1 from companyprofile where company_ID = '$_COOKIE[co
         </div>
         <ul class="side-ul">
             <li class="side-li"><a class="side" href="dashboard.php">Dashboard</a></li>
-            <li class="side-li"><a class="side" href="profileUpdate.php">View/Update Profile</a></li>
+            <li class="side-li"><a class="side" href="profileUpdateForm.php">View/Update Profile</a></li>
 	    <li class="side-li"><a class="side" href="quoteHistory.php">Quote History</a></li>
             <li class="side-li"><a class="side" href="logoutScript.php">Logout</a></li>
         </ul>

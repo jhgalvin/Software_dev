@@ -45,13 +45,13 @@ $user = $db->single();
     <div id="container" style='margin-bottom:6em;text-align:center;'>
         <h1>New User</h1>
 
-        <form  id="submit" action="addAnimalScript.php" method="POST">
+        <form  id="submit" action="signUpScript.php" method="POST">
 
             <label for="user_name">userName:</label><br>
-            <input type="text"  name = "user_name" required><br>
+            <input type="text"  name = "company_User" required><br>
 
             <label for="password">Password:</label><br>
-            <input type="password" id = "password" name = "password" onkeyup = "password_check()" required><br>
+            <input type="password" id = "password" name = "company_Pass" onkeyup = "password_check()" required><br>
 		   
 		    <label for="confirm_password">Confirm Password: </label><br>
             <input type="password" id = "confirm_password" name = "confirm_password" onkeyup = "password_check()"required><br>

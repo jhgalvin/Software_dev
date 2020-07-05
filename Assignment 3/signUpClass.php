@@ -19,10 +19,10 @@ Class signUpClass
 		
 		$this->post = $post; // $_POST array from form;
 		
-		$this->animal_name = $this->post['company_User'];
+		$this->company_User = $this->post['company_User'];
 	
 		
-		$this->animal_DOB = $this->post['company_Pass'];
+		$this->company_Pass = $this->post['company_Pass'];
 		
 		
 
@@ -38,7 +38,7 @@ Class signUpClass
 	}
 	
 	
-	}
+
 
 	
 	public function profileFill(){
