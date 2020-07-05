@@ -18,13 +18,19 @@ Class loginClass
 		$this->company_User = $this->post['company_User'];
 		$this->company_Pass = $this->post['company_Pass'];
 		
-		$sql = "SELECT * FROM logincredentials WHERE company_User = '$this->company_User' AND company_Pass = '$this->company_Pass' ";
+		$this->checklogin();
+		$this->login();
+	}
 
+public function checklogin()
+{
+		$sql = "SELECT * FROM logincredentials WHERE company_User = '$this->company_User' AND company_Pass = '$this->company_Pass' ";
 		$this->db->query($sql);
 		$this->result = $this->db->single();
 
-		$this->login();
-	}
+		return $result;
+}
+
 	public function login()
 	{
 		 print_r($result);

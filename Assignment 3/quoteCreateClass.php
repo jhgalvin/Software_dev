@@ -31,14 +31,21 @@ Class quoteCreateClass
 		$this->total_amt_Due = $this->post['total_amt_Due'];
 		$this->delivery_Address = $this->post['delivery_Address'];
 		
+		
+		$this->getlogincredentials();
+		$this->checkCookie();
+		$this->profileFill();
+	}
+
+	public function getlogincredentials()
+	{
 		$sql = "SELECT * FROM logincredentials WHERE company_ID = '$this->company_ID'";
 		 
 		$this->db->query($sql);
 		$this->result = $this->db->single();
-		
-		$this->checkCookie();
-		$this->profileFill();
+		return $result;
 	}
+	
 	public function render(){
 	  echo "<PRE>";
 	  print_r($this->result);
