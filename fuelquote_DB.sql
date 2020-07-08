@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2020 at 11:51 PM
+-- Generation Time: Jul 08, 2020 at 09:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -119,15 +119,13 @@ INSERT INTO `logincredentials` (`company_ID`, `company_User`, `company_Pass`) VA
 -- Indexes for table `companyprofile`
 --
 ALTER TABLE `companyprofile`
-  ADD PRIMARY KEY (`company_ID`),
-  ADD KEY `company_ID` (`company_ID`);
+  ADD PRIMARY KEY (`company_ID`);
 
 --
 -- Indexes for table `companyquote`
 --
 ALTER TABLE `companyquote`
-  ADD PRIMARY KEY (`quote_ID`),
-  ADD KEY `company_ID` (`company_ID`);
+  ADD PRIMARY KEY (`quote_ID`);
 
 --
 -- Indexes for table `logincredentials`
@@ -150,16 +148,6 @@ ALTER TABLE `companyquote`
 --
 ALTER TABLE `logincredentials`
   MODIFY `company_ID` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100001;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `companyprofile`
---
-ALTER TABLE `companyprofile`
-  ADD CONSTRAINT `companyprofile_ibfk_1` FOREIGN KEY (`company_ID`) REFERENCES `logincredentials` (`company_ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
