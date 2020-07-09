@@ -22,13 +22,7 @@ Class signUpClass
 		$this->company_User = $this->post['company_User'];
 	
 		
-		$this->company_Pass = $this->post['company_Pass'];
-		
-		
-
-		 
-		
-		
+		$this->company_Pass = crypt($this->post['company_Pass']);
 		
 		$this->profileFill();
 	}
@@ -44,8 +38,7 @@ Class signUpClass
 	public function profileFill(){
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{
-		try
-		{
+		
 			$sql = "INSERT INTO logincredentials (company_User, Company_Pass ) VALUES ('$this->company_User', '$this->company_Pass')";
 			$this->db->query($sql);
 			$this->result = $this->db->execute();
@@ -54,13 +47,7 @@ Class signUpClass
            		window.location.replace("login.php");
             		</script>'
 			;
-		}catch(PDOException $e){
-			echo '<script type="text/JavaScript">
-                	alert("An error occured (Username already exist).");
-               		window.location.replace("SignUp.php");
-                	</script>'
-			;
-		}
+		
 		}
 	}
 }
