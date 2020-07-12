@@ -19,7 +19,7 @@ Class loginClass
 		$this->company_Pass = $this->post['company_Pass']; 
 	
 		
-		$this->checklogin();
+		$this->checklogin(); //comment out this line for unitTesting
 		
 	}
 
@@ -29,7 +29,7 @@ public function checklogin()
 		
 		$this->db->query($sql);
 		$this->result = $this->db->single();
-		if(crypt($this->company_Pass, $this->result->company_Pass) == $this->result->company_Pass) 
+		if(password_verify($this->company_Pass, $this->result->company_Pass)) 
 		{
 			$this->login();
 		}
@@ -37,7 +37,7 @@ public function checklogin()
 		{ 
 			exit(header("Location: login.php?wp=1")); 
 		}
-		return $result;
+		return $this->result; 
 }
 
 	public function login()

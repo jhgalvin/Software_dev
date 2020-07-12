@@ -16,30 +16,20 @@ Class signUpClass
 	public function __construct(Array $post)
 	{
 		$this->db = new Database();
-		
 		$this->post = $post; // $_POST array from form;
 		
 		$this->company_User = $this->post['company_User'];
-	
+		$this->company_Pass = password_hash($this->post['company_Pass'], PASSWORD_DEFAULT);
 		
-		$this->company_Pass = crypt($this->post['company_Pass']);
-		
+		//comment out line 25 when unit testing
 		$this->profileFill();
 	}
-	public function render(){
-	  echo "<PRE>";
-	  print_r($this->result);
-	}
-	
-	
-
-
 	
 	public function profileFill(){
+		//comment out lines 30, 31, and 50 for unit testing
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{
-		
-			try
+		try
 		{
 			$sql = "INSERT INTO logincredentials (company_User, Company_Pass ) VALUES ('$this->company_User', '$this->company_Pass')";
 			$this->db->query($sql);
@@ -56,7 +46,23 @@ Class signUpClass
                 	</script>'
 			;
 		}
-		
+		return $this->checkSuccessful();
+		}
+	}
+
+	public function checkSuccessful()
+	{
+		$sql = "SELECT * FROM logincredentials WHERE company_User = '$this->company_User'";
+		 
+		$this->db->query($sql);
+		$this->result = $this->db->single();
+		if($this->result->company_User == $this->company_User)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 }

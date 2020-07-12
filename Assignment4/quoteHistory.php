@@ -74,22 +74,6 @@ if ($_COOKIE['company_ID']){
 
               <tbody>
              <?PHP
-
-		/*THE FOLLOWING IS HARDCODED FILLER DATA! DELETE LATER!!!!
-		
-		for ($num=1; $num <= 5; $num++) {
- 	 		$shade = ($num % 2) ? 'style="background:#b0e0ff;"':'';
-			echo "<tr $shade>
-				<td>$num</td>
-				<td>Filler Data</td>
-				<td>Filler Data</td>
-				<td>Filler Data</td>
-				<td>Filler Data</td>
-				<td>Filler Data</td>
-							
-							
-					</tr>";
-		}*/
 				
 		/* INTEGRATION WITH DATABASE!!! */
 				$num=1;

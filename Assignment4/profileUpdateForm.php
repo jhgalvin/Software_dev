@@ -6,7 +6,6 @@ include "Database.php";
 if(!$_COOKIE['company_ID']){
 	header('Location: index.html');
 }
-
 $db = new Database();
 
 $sql="SELECT * from logincredentials where company_ID = '$_COOKIE[company_ID]'";
@@ -18,28 +17,9 @@ $sql="SELECT * from companyprofile where company_ID = '$_COOKIE[company_ID]'";
 $db->query($sql);
 $item = $db->single();
 
-$states = array("AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY","LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY");
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-	$companyName = $_POST['companyName'];
-	$companyAddress1 = $_POST['companyAddress1'];
-	$companyAddress2 = $_POST['companyAddress2'];
-	$companyCity = $_POST['companyCity'];
-	$companyState = $_POST['companyState'];
-	$companyZipCode = $_POST['companyZipCode'];
-
-	$sql="
-	UPDATE companyprofile SET companyName = '$companyName', companyAddress1 = '$companyAddress1', companyAddress2 = '$companyAddress2', companyCity = '$companyCity', companyState = '$companyState', 
-	companyZipCode = '$companyZipCode' WHERE company_ID = '$_COOKIE[company_ID]'";
-	$db->query($sql);
-	$db->execute();
-	header('Location: dashboard.php');
-	// echo "<pre>";
-	 //echo print_r($vv);die;
-
-}
-
+$states = array("AK","AL","AR","AZ","CA","CO","CT","DE","FL","GA","HI","IA","ID","IL","IN","KS","KY",
+"LA","MA","MD","ME","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY","OH","OK","OR",
+"PA","RI","SC","SD","TN","TX","UT","VA","VT","WA","WI","WV","WY");
 
 ?>
 
@@ -77,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
    </body>
 
 
-   <form  method="post">
+   <form  action="profileUpdateScript.php" method="post">
 		<div id="container" style='margin-bottom:6em;text-align:center;'>
 			<h1> Profile Update Form </h1>
 				<label for="companyName">Company Name:</label><br>

@@ -1,21 +1,4 @@
-<?PHP
-/*
-session_start();
 
-include "Database.php";
-
-if(!$_COOKIE['user_id']){
-	header('Location: index.html');
-}
-
-$db = new Database();
-
-$sql="SELECT * from user where user_id = '$_COOKIE[user_id]'";
-$db->query($sql);
-$user = $db->single();
-
-*/
-?>
 <!DOCTYPE html>
 <html lang="en">
 

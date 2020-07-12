@@ -6,11 +6,9 @@ ini_set("display_errors",E_ALL);
 Class quoteCreateClass
 {
 	public $post;
-	
+	public $company_ID;
 	public $gallons_Requested;
-
 	public $delivery_Date;
-
 	public $suggested_Price;
 	public $total_amt_Due;
 	public $delivery_Address1;
@@ -18,7 +16,6 @@ Class quoteCreateClass
 	public $delivery_City;
 	public $delivery_State;
 	public $delivery_ZipCode;
-	public $company_ID;
 	public $db;
 	public $result;
 	
@@ -27,10 +24,12 @@ Class quoteCreateClass
 		$this->db = new Database();
 		
 		$this->post = $post; // $_POST array from form;
-		$this->id =$_COOKIE['company_ID'];
-		$this->gallons_Requested = $this->post['gallons_Requested'];
-
+		
+		//for unit testing comment out line 29 and uncomment line 30 (simulating cookies)
 		$this->company_ID=$_COOKIE['company_ID'];
+		//$this->company_ID = $this->post['company_ID'];
+		
+		$this->gallons_Requested = $this->post['gallons_Requested'];
 		$this->delivery_Date = $this->post['delivery_Date'];
 		$this->suggested_Price = $this->post['suggested_Price'];
 		$this->total_amt_Due = $this->post['total_amt_Due'];
@@ -40,23 +39,10 @@ Class quoteCreateClass
 		$this->delivery_State = $this->post['delivery_State'];		
 		$this->delivery_ZipCode = $this->post['delivery_ZipCode'];
 		
-		$this->getlogincredentials();
+		//for unit testing, comment out line 43 and 44
 		$this->checkCookie();
 		$this->profileFill();
-	}
-
-	public function getlogincredentials()
-	{
-		$sql = "SELECT * FROM logincredentials WHERE company_ID = '$this->company_ID'";
-		 
-		$this->db->query($sql);
-		$this->result = $this->db->single();
-		return $result;
-	}
-	
-	public function render(){
-	  echo "<PRE>";
-	  print_r($this->result);
+		
 	}
 	
 	public function checkCookie(){
@@ -64,9 +50,9 @@ Class quoteCreateClass
 		header('Location: index.html');
 		}
 	}
-
 	
 	public function profileFill(){
+		//for unit testing comment out lines 56, 57, and 78
 		if($_SERVER['REQUEST_METHOD']=='POST')
 		{
 		try
