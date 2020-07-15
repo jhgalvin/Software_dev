@@ -46,8 +46,16 @@ $user = $db->single();
     <header id="imgcontainer"></header>
     <div id="container">
         <h1>Client Dashboard</h1>
-        </div>
+       
+	
+    <div class="column">
+    <h2>In order to generated a fuel quote please fill the rest of the information by following this <a href= "profileUpdateForm.php" >link</a>.</h2> 
+
+    </div>
+    </div>
         
+	
+	
     
 
 
