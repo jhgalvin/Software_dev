@@ -1,0 +1,57 @@
+CREATE TABLE companyprofile (
+  company_ID int(6) NOT NULL,
+  companyName varchar(50) DEFAULT NULL,
+  companyAddress1 varchar(100) DEFAULT NULL,
+  companyAddress2 varchar(100) DEFAULT NULL,
+  companyCity varchar(100) DEFAULT NULL,
+  companyState varchar(2) DEFAULT NULL,
+  companyZipCode int(9) DEFAULT NULL,
+  PRIMARY KEY (company_ID)
+);
+
+CREATE TABLE companyquote (
+  quote_ID int(6) NOT NULL AUTO_INCREMENT,
+  company_ID int(6) NOT NULL,
+  gallons_Requested decimal(6,2) UNSIGNED NOT NULL,
+  delivery_Date date NOT NULL,
+  suggested_Price decimal(10,2) UNSIGNED NOT NULL,
+  total_amt_Due decimal(10,2) UNSIGNED NOT NULL,
+  delivery_Address varchar(200) NOT NULL,
+  PRIMARY KEY (quote_ID)
+);
+
+CREATE TABLE logincredentials (
+  company_ID int(6) NOT NULL AUTO_INCREMENT,
+  company_User varchar(20) NOT NULL,
+  company_Pass varchar(20) NOT NULL,
+  PRIMARY KEY (company_ID)
+);
+
+INSERT INTO companyprofile (company_ID, companyName, companyAddress1, companyAddress2, companyCity, companyState, companyZipCode) VALUES
+(10000, 'Fuel Maxx', '4800 Calhoun Rd', NULL, 'Houston', 'TX', 77004);
+
+INSERT INTO logincredentials (company_ID, company_User, company_Pass) VALUES
+(100000, 'Fuel_Maxx', 'password');
+
+
+CREATE TRIGGER UNIQUE_USERNAME
+BEFORE INSERT ON logincredentials
+FOR EACH ROW
+BEGIN
+IF(EXISTS(SELECT 1 FROM logincredentials WHERE
+         company_User = NEW.company_User))
+THEN
+	SIGNAL SQLSTATE VALUE '45000'
+    SET MESSAGE_TEXT = 'This Username Has Already Been Taken.';
+    END IF;
+    END $$
+
+CREATE TRIGGER PROFILE_CREATION
+AFTER INSERT ON logincredentials
+FOR EACH ROW
+BEGIN
+	INSERT INTO companyprofile (company_ID) VALUES (NEW.company_ID);
+END $$
+
+INSERT INTO logincredentials (company_User, company_Pass) VALUES
+('TriggerTest', 'password');
