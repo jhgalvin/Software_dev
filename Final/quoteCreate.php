@@ -25,30 +25,30 @@ $sql="SELECT * from companyquote where company_ID = '$_COOKIE[company_ID]'";
 	$db->query($sql);
 	$result = $db->single();
     $rowNum = $db->rowCount();
-
 ?>
 
 <script>
-if("<?php echo $item->companyAddress1; ?>" == "")
+
+if("<? php echo $item->companyAddress1; ?>" == "")
 	{
 		alert("You Must Fill Out Your Profile Before Creating A Quote!");
 		window.location.replace("profileUpdateForm.php");
 	}
+
 </script>
 
 <!DOCTYPE html>
-<html lang="en">
 
-<head>
+<html lang="en">
+ <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create a Quote</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="sidebar.css">
-</head>
+ </head>
 
 <body>
-
     <div id="sidebar">
         <div class="toggle-btn" onclick="toggleSidebar()">
             <span></span>
@@ -64,7 +64,7 @@ if("<?php echo $item->companyAddress1; ?>" == "")
         </ul>
     </div>
 
-   <!--- <header id="imgcontainer"></header> -->
+   
     <div id="container" style='margin-bottom:6em;text-align:center;'>
         <h1>Create Quote</h1>
 
@@ -107,16 +107,21 @@ if("<?php echo $item->companyAddress1; ?>" == "")
         </form>
     </div>
 
-
-<script> 
+<script type="text/javascript"> 
 
 delivery_date.min = new Date().toISOString().split("T")[0];
-var currentPrice = 1.50;
+
 function submitCheck()
 {
-	if(document.getElementById("gallons").value == "" || document.getElementById("delivery_date").value == "")
+	if(document.getElementById("gallons").value == "")
 	{
-		return true;
+		alert("Please enter the number of gallons you want!");
+		return false;
+	}
+	else if(document.getElementById("delivery_date").value == "")
+	{
+		alert("Please enter a delivery date!");
+		return false;
 	}
 	else if (document.getElementById("delivery_date").value < new Date().toISOString().split("T")[0])
 	{
@@ -142,65 +147,137 @@ function clearPrices()
   
 } 
 
-function getGallonsRequestedFactor()
+function getGallonsRequestedFactor(numGallons)
 {
 	
-    if(document.getElementById("gallons").value >= 1000.00)
+    if(numGallons >= 1000.00)
     {
          var a = parseFloat("0.02");
-         return a;
     }
     else
     {
-         var b = parseFloat("0.03");
-         return b;
+         var a = parseFloat("0.03");
     }
-	
+	/*
+	var b = document.getElementById("gallons").value;
+	if(b >= 1000.00 && a == "0.02") 
+	{
+		alert("Gallons over 1000 Test Passed");
+	}
+	else if(b < 1000.00 && a == "0.03")
+	{
+		alert("Gallons under 1000 Test Passed");
+	}
+	else{
+		alert("Gallons Test Failed");
+	}
+	*/
+	return a;
 }
 
-function getLocationFactor()
+function getLocationFactor(state)
 {
-    if(document.getElementById("delivery_State").value == "TX")
+    if(state == "TX")
     {
         var a = parseFloat("0.02");
-        return a;
     }
     else
     {
-        var b = parseFloat("0.04");
-        return b;
+        var a = parseFloat("0.04");
     }
+	/*
+	if((document.getElementById("delivery_State").value == "TX" && a == 0.02) || (document.getElementById("delivery_State").value != "TX" && a == 0.04)) 
+	{
+		alert("Location Test Passed");
+	}
+	else{
+		alert("Location Test Failed");
+	}
+	*/
+	return a;
 }
 
-function getRateHistoryFactor()
+function getRateHistoryFactor(numQuotes)
 {
-	var numQuotes = "<?php echo $rowNum ?>";
+
 	if (numQuotes > 0)
 	{
 		var a = parseFloat("0.01");
-		return a;
 	}
 	else
 	{
-		var b = parseFloat("0.00");
-		return b; 
+		var a = parseFloat("0.00"); 
 	}
-
+	/*
+	if(("<?php echo $rowNum ?>" > 0 && a == 0.01) || ("<?php echo $rowNum ?>" <= 0 && a == 0.00)) 
+	{
+		alert("History Test Passed");
+	}
+	else{
+		alert("History Test Failed");
+	}
+	*/
+	return a;
 }
 
 function getCompanyProfitFactor()
 {
     var a = parseFloat("0.1");
+	/*if(a == 0.1)
+	{
+		alert("Profit Test Passed");
+	}
+	else 
+	{
+		alert("Profit Test Failed");
+	}
+	*/
     return a;
 }
 
-function calculate_price() 
+
+function calculate_price()
 {
-	var margin = (getLocationFactor() - getRateHistoryFactor() + getGallonsRequestedFactor() + getCompanyProfitFactor()) * currentPrice;
-	var suggestedPrice = currentPrice + margin;
-    document.getElementById('price').value= parseFloat(suggestedPrice).toFixed(4);
-    document.getElementById('total').value=parseFloat(document.getElementById('gallons').value * document.getElementById('price').value).toFixed(2); 
-  
+	if(document.getElementById("gallons").value <= 0.00)
+	{
+		alert("Please enter the amount of gallons you want!");
+		return false;
+	}
+	
+    var currentPrice = 1.50;
+
+    var numGallons = document.getElementById("gallons").value;
+    var state = document.getElementById("delivery_State").value;
+    var numQuotes = "<?php echo $rowNum ?>";
+
+	var margin = (getLocationFactor(state) - getRateHistoryFactor(numQuotes) + getGallonsRequestedFactor(numGallons) + getCompanyProfitFactor()) * currentPrice;
+	var suggestedPrice = parseFloat(currentPrice + margin).toFixed(4);
+    var finalCost = parseFloat(numGallons * suggestedPrice).toFixed(2);
+
+    
+	
+	
+    document.getElementById('price').value = suggestedPrice;
+    document.getElementById('total').value = finalCost;
+	/*
+	if(1.695 == document.getElementById("price").value)
+	{
+		alert("Price Test Passed");
+	}
+	else 
+	{
+		alert("Price Test Failed");
+	}
+	
+	if(2542.50 == document.getElementById("total").value)
+	{
+		alert("Total Test Passed");
+	}
+	else 
+	{
+		alert("Total Test Failed");
+	}
+	*/
 }
 
 </script>

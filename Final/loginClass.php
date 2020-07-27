@@ -29,6 +29,7 @@ public function checklogin()
 		
 		$this->db->query($sql);
 		$this->result = $this->db->single();
+		//comment out lines 33 to 40 when UnitTesting, Not actually logging in, only testing if It was successful or not
 		if(password_verify($this->company_Pass, $this->result->company_Pass)) 
 		{
 			$this->login();
