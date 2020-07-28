@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 16, 2020 at 05:29 PM
+-- Generation Time: Jul 28, 2020 at 04:05 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -49,8 +49,9 @@ INSERT INTO `companyprofile` (`company_ID`, `companyName`, `companyAddress1`, `c
 (100003, NULL, NULL, NULL, NULL, NULL, NULL),
 (100005, '1969', '2255 Braeswood ', '656', 'Houston', 'TX', 77030),
 (100006, 'Hashers55', '123 JAJAJAJAJAJAJ', '', 'Albany', 'NY', 123456),
-(100007, NULL, NULL, NULL, NULL, NULL, NULL),
-(100008, 'CurryLand', '666 Devil ln', '777', 'Stafford', 'TX', 77477);
+(100007, 'ProfileUnitTest', '123 TestAddress1', '456 TestAddress2', 'Sacramento', 'CA', 1234),
+(100008, 'CurryLand', '666 Devil ln', '777', 'Stafford', 'TX', 77477),
+(100010, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Triggers `companyprofile`
@@ -87,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `companyquote` (
   `delivery_ZipCode` int(9) NOT NULL,
   PRIMARY KEY (`quote_ID`),
   KEY `company_ID` (`company_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=600011 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=600015 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `companyquote`
@@ -96,8 +97,9 @@ CREATE TABLE IF NOT EXISTS `companyquote` (
 INSERT INTO `companyquote` (`quote_ID`, `company_ID`, `gallons_Requested`, `delivery_Date`, `suggested_Price`, `total_amt_Due`, `delivery_Address1`, `delivery_Address2`, `delivery_City`, `delivery_State`, `delivery_ZipCode`) VALUES
 (600005, 100006, '5.00', '2020-07-15', '5.0000', '25.00', '123 Hash', '', 'Albany', 'NY', 123456),
 (600006, 100008, '55.00', '2020-07-15', '5.0000', '275.00', '666 Devil ln', '777', 'Stafford', 'TX', 77477),
-(600009, 100005, '460.00', '2020-07-29', '1.7300', '795.80', '2255 Braeswood ', '656', 'Houston', 'TX', 77030),
-(600010, 100005, '1500.00', '2020-07-27', '1.6950', '2542.50', '2255 Braeswood ', '656', 'Houston', 'TX', 77030);
+(600011, 100006, '34.00', '2020-07-23', '1.7400', '59.16', '123 JAJAJAJAJAJAJ', '', 'Albany', 'NY', 123456),
+(600012, 100005, '89.00', '2020-07-31', '1.7550', '156.19', '2255 Braeswood ', '656', 'Charleston', 'VA', 77030),
+(600014, 100005, '5.00', '2021-05-13', '35.0000', '56.00', '123 Here', '', 'Houston', 'TX', 1234);
 
 --
 -- Triggers `companyquote`
@@ -124,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `logincredentials` (
   `company_User` varchar(20) NOT NULL,
   `company_Pass` varchar(255) NOT NULL,
   PRIMARY KEY (`company_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=100009 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=100011 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `logincredentials`
@@ -134,8 +136,9 @@ INSERT INTO `logincredentials` (`company_ID`, `company_User`, `company_Pass`) VA
 (100003, 'EncryptTest', '$1$pFKchYfK$xejje0OCRLhALDk2PM5GI/'),
 (100005, 'Fuel_Maxx', '$1$sb9p7LkR$FIxufTyxrr3XCvL5c7ulf.'),
 (100006, 'HashTest', '$2y$10$rlSBjbVW4COV5alEeSQLRO8OoA4RZivcPiN8z5NU2jrJI/Jc7.daa'),
-(100007, 'PUpdateUTest', '$2y$10$jDlXHlwRdMpbPNpvL2DjO./ZghdfbdMftUO7k1uKyyxRvx5goAl5a'),
-(100008, 'SneakyTurtle', '$2y$10$Bk4e6WW8GZvXZbhC6VhbUuZO0EDePvw0UQaS76CCdChjGUFc80EwK');
+(100007, 'ProfileUnitTest', 'password'),
+(100008, 'SneakyTurtle', '$2y$10$Bk4e6WW8GZvXZbhC6VhbUuZO0EDePvw0UQaS76CCdChjGUFc80EwK'),
+(100010, 'UnitTest', '$2y$10$jQDFl8vykKCGC.bw1M.JhOncdwI8I7N7GTsvNRs/5ONbZ.EUsE1ga');
 
 --
 -- Triggers `logincredentials`

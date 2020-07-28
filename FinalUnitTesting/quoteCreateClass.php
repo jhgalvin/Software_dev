@@ -74,7 +74,38 @@ Class quoteCreateClass
                 	</script>'
 			;
 		}
-		
+		return $this->checkSuccessful();
 		//}
+
 	}
+
+	public function checkSuccessful()
+	{
+		$sql = "SELECT * FROM companyquote WHERE company_ID = '$this->company_ID'
+		AND gallons_Requested = '$this->gallons_Requested'
+		AND delivery_Date = '$this->delivery_Date'
+		AND suggested_Price = '$this->suggested_Price'
+		AND delivery_Address1 = '$this->delivery_Address1'
+		AND delivery_Address2 = '$this->delivery_Address2'
+		AND delivery_City = '$this->delivery_City'
+		AND delivery_State = '$this->delivery_State'
+		AND delivery_ZipCode = '$this->delivery_ZipCode'";
+
+		$this->db->query($sql);
+		$this->result = $this->db->single();
+		if($this->result->total_amt_Due == $this->total_amt_Due)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+
+
+
+
+
 }
