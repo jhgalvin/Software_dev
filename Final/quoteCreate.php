@@ -27,9 +27,9 @@ $sql="SELECT * from companyquote where company_ID = '$_COOKIE[company_ID]'";
     $rowNum = $db->rowCount();
 ?>
 
-<script>
+<script type="text/javascript">
 
-if("<? php echo $item->companyAddress1; ?>" == "")
+if("<?php echo $item->companyAddress1; ?>" == "")
 	{
 		alert("You Must Fill Out Your Profile Before Creating A Quote!");
 		window.location.replace("profileUpdateForm.php");
@@ -59,7 +59,7 @@ if("<? php echo $item->companyAddress1; ?>" == "")
         <ul class="side-ul">
             <li class="side-li"><a class="side" href="dashboard.php">Dashboard</a></li>
             <li class="side-li"><a class="side" href="profileUpdateForm.php">View/Update Profile</a></li>
-	    <li class="side-li"><a class="side" href="quoteHistory.php">Quote History</a></li>
+			<li class="side-li"><a class="side" href="quoteHistory.php">Quote History</a></li>
             <li class="side-li"><a class="side" href="logoutScript.php">Logout</a></li>
         </ul>
     </div>
@@ -99,8 +99,8 @@ if("<? php echo $item->companyAddress1; ?>" == "")
 			
 
         <button class="button" type="button" onclick="calculate_price()">Get Quote</button>    
-	<button class="button" type="submit" onclick = "return submitCheck()">Submit Quote</button>
-	<button class="cancel" type="button" onclick="location.href='dashboard.php'">Cancel</button >
+		<button class="button" type="submit" onclick = "return submitCheck()">Submit Quote</button>
+		<button class="cancel" type="button" onclick="location.href='dashboard.php'">Cancel</button >
             
 			
 
